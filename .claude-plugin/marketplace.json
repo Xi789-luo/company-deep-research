@@ -1,0 +1,18 @@
+{
+  "name": "company-deep-research",
+  "description": "公司深度研究 —— 把任意 AI 公司/实验室做成单文件 HTML 深度研究报告的 Claude Code skill",
+  "owner": {
+    "name": "Xi789-luo"
+  },
+  "plugins": [
+    {
+      "name": "company-deep-research",
+      "description": "把任意一家 AI 公司/实验室做成一份单文件自包含 HTML 深度研究报告——结论先行、组织人才、技术路线、资本结构、竞争格局、发展走向与风险，明确区分已核实与未核实项。不依赖本地终端与任何脚本。",
+      "author": {
+        "name": "Xi789-luo"
+      },
+      "category": "research",
+      "source": "./"
+    }
+  ]
+}

@@ -1,0 +1,576 @@
+<title>{{公司名}}</title>
+<style>
+:root{
+  --paper:#EFF1F4;
+  --surface:#FFFFFF;
+  --surface-2:#F7F8FA;
+  --ink:#14171C;
+  --ink-soft:#4A515C;
+  --muted:#7C848F;
+  --rule:#D5D9E0;
+  --rule-soft:#E4E7EC;
+  --accent:#1E4C8A;
+  --accent-tint:#E7EDF6;
+  --warn:#8A6412;
+  --warn-tint:#F6EFDD;
+  --risk:#A32B26;
+  --risk-tint:#F7E7E5;
+  --good:#2A6A4F;
+  --good-tint:#E3EFE9;
+  --serif:"Noto Serif SC","Songti SC","Source Han Serif SC",Georgia,serif;
+  --sans:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --mono:"IBM Plex Mono","SFMono-Regular",Menlo,Consolas,monospace;
+  --col:74ch;
+  --gut:clamp(16px,4vw,40px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F1216;
+    --surface:#171B21;
+    --surface-2:#1C2128;
+    --ink:#E8EAED;
+    --ink-soft:#B3BAC4;
+    --muted:#7E8794;
+    --rule:#2A313A;
+    --rule-soft:#222831;
+    --accent:#7FB0EE;
+    --accent-tint:#17243A;
+    --warn:#D6A040;
+    --warn-tint:#2A2317;
+    --risk:#E3706A;
+    --risk-tint:#2E1B1A;
+    --good:#5FBF92;
+    --good-tint:#15271F;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F1216;
+  --surface:#171B21;
+  --surface-2:#1C2128;
+  --ink:#E8EAED;
+  --ink-soft:#B3BAC4;
+  --muted:#7E8794;
+  --rule:#2A313A;
+  --rule-soft:#222831;
+  --accent:#7FB0EE;
+  --accent-tint:#17243A;
+  --warn:#D6A040;
+  --warn-tint:#2A2317;
+  --risk:#E3706A;
+  --risk-tint:#2E1B1A;
+  --good:#5FBF92;
+  --good-tint:#15271F;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-weight:400;
+  font-size:16.5px;
+  line-height:1.8;
+  padding-inline:var(--gut);
+  padding-block:0 96px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1120px;margin:0 auto}
+
+/* ---------- nav ---------- */
+nav.top{
+  position:sticky;
+  top:env(safe-area-inset-top,0px);
+  z-index:20;
+  background:var(--paper);
+  border-bottom:1px solid var(--rule);
+  margin-inline:calc(var(--gut) * -1);
+  padding-inline:var(--gut);
+  padding-block:0;
+}
+nav.top .inner{
+  max-width:1120px;margin:0 auto;
+  display:flex;align-items:center;gap:20px;
+}
+nav.top .brand{
+  font-family:var(--mono);font-size:11px;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink);
+  white-space:nowrap;padding-block:12px;
+}
+nav.top .links{
+  display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;
+}
+nav.top .links::-webkit-scrollbar{display:none}
+nav.top a{
+  font-size:12.5px;color:var(--muted);text-decoration:none;
+  padding:13px 9px;white-space:nowrap;border-bottom:2px solid transparent;
+}
+nav.top a:hover{color:var(--ink);border-bottom-color:var(--rule)}
+
+/* ---------- masthead ---------- */
+header.mast{
+  padding-block:clamp(48px,8vw,96px) 40px;
+  max-width:var(--col);
+}
+.kicker{
+  font-family:var(--mono);font-size:11.5px;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
+  margin:0 0 22px;
+}
+h1{
+  font-family:var(--serif);font-weight:700;
+  font-size:clamp(38px,7vw,68px);
+  line-height:1.12;letter-spacing:-.015em;
+  margin:0 0 20px;text-wrap:balance;
+}
+.standfirst{
+  font-size:clamp(17px,2.2vw,20px);line-height:1.75;color:var(--ink-soft);
+  margin:0 0 34px;max-width:60ch;
+}
+.docmeta{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:1px;background:var(--rule);border:1px solid var(--rule);
+  font-family:var(--mono);font-size:12px;
+}
+.docmeta div{background:var(--surface);padding:12px 14px}
+.docmeta dt{
+  color:var(--muted);font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;margin-bottom:5px;
+}
+.docmeta dd{margin:0;color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums;font-size:12.5px;line-height:1.5}
+
+/* ---------- thesis ---------- */
+.thesis{
+  margin-block:8px 0;
+  background:var(--surface);
+  border-top:2px solid var(--accent);
+  border-bottom:1px solid var(--rule);
+  padding:clamp(26px,4vw,42px) clamp(20px,3.5vw,44px);
+  max-width:var(--col);
+}
+.thesis h2{
+  font-family:var(--mono);font-size:11.5px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
+  margin:0 0 20px;
+}
+.thesis ol{margin:0;padding:0;list-style:none;counter-reset:t;display:flex;flex-direction:column;gap:16px}
+.thesis li{
+  counter-increment:t;position:relative;padding-left:34px;
+  font-size:16px;line-height:1.8;color:var(--ink-soft);
+}
+.thesis li::before{
+  content:counter(t);position:absolute;left:0;top:2px;
+  font-family:var(--mono);font-size:11px;font-weight:600;color:var(--accent);
+  border:1px solid var(--accent);border-radius:50%;
+  width:20px;height:20px;display:grid;place-items:center;
+}
+.thesis li b{color:var(--ink);font-weight:700}
+
+/* ---------- sections ---------- */
+section{padding-block:clamp(52px,7vw,86px);border-top:1px solid var(--rule);max-width:var(--col)}
+section.wide{max-width:none}
+.snum{
+  font-family:var(--mono);font-size:11.5px;font-weight:600;
+  letter-spacing:.16em;color:var(--muted);margin:0 0 12px;display:block;
+}
+h2.sec{
+  font-family:var(--serif);font-weight:700;
+  font-size:clamp(25px,3.6vw,36px);line-height:1.3;letter-spacing:-.01em;
+  margin:0 0 26px;text-wrap:balance;
+}
+h3{
+  font-family:var(--serif);font-weight:600;font-size:19.5px;line-height:1.5;
+  margin:40px 0 14px;text-wrap:balance;
+}
+h4{
+  font-family:var(--sans);font-weight:700;font-size:15px;
+  margin:28px 0 10px;color:var(--ink);
+}
+p{margin:0 0 18px;color:var(--ink-soft)}
+p.lede{font-size:18px;color:var(--ink);line-height:1.75}
+strong,b{color:var(--ink);font-weight:700}
+em{font-style:normal;background:var(--accent-tint);padding:1px 4px;border-radius:2px;color:var(--ink)}
+code{font-family:var(--mono);font-size:.9em;background:var(--surface-2);border:1px solid var(--rule-soft);padding:1px 5px;border-radius:3px;color:var(--ink)}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--accent) 35%,transparent)}
+a:hover{border-bottom-color:var(--accent)}
+ul.plain{padding-left:20px;margin:0 0 18px;color:var(--ink-soft)}
+ul.plain li{margin-bottom:9px}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:500;color:var(--ink)}
+
+/* ---------- quote ---------- */
+blockquote{
+  margin:26px 0;padding:0 0 0 22px;
+  border-left:2px solid var(--rule);
+  font-family:var(--serif);font-size:18px;line-height:1.7;color:var(--ink);
+}
+blockquote cite{
+  display:block;margin-top:10px;font-family:var(--sans);font-style:normal;
+  font-size:13px;color:var(--muted);
+}
+
+/* ---------- table ---------- */
+.tw{overflow-x:auto;margin:26px 0;border:1px solid var(--rule);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+th,td{padding:11px 15px;text-align:left;border-bottom:1px solid var(--rule-soft);vertical-align:top;line-height:1.65}
+thead th{
+  background:var(--surface-2);font-family:var(--mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+  border-bottom:1px solid var(--rule);white-space:nowrap;
+}
+tbody tr:last-child td{border-bottom:none}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+th.n{text-align:right}
+td.k{font-weight:700;color:var(--ink);white-space:nowrap}
+caption{caption-side:bottom;padding:11px 15px;text-align:left;font-size:12px;color:var(--muted);border-top:1px solid var(--rule-soft);line-height:1.6}
+
+/* ---------- chips ---------- */
+.chip{
+  display:inline-flex;align-items:center;gap:5px;
+  font-family:var(--mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.05em;padding:2px 7px;border-radius:3px;white-space:nowrap;
+}
+.chip.ok{background:var(--good-tint);color:var(--good)}
+.chip.mid{background:var(--warn-tint);color:var(--warn)}
+.chip.no{background:var(--risk-tint);color:var(--risk)}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 20px}
+
+/* ---------- stack diagram ---------- */
+.stack{
+  display:grid;gap:1px;background:var(--rule);
+  border:1px solid var(--rule);margin:30px 0;background-color:var(--rule);
+}
+.band{background:var(--surface);padding:18px 20px}
+.band .bl{
+  font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:9px;
+}
+.band .bn{font-family:var(--serif);font-weight:600;font-size:17px;margin-bottom:8px;color:var(--ink)}
+.band .bd{font-size:13.5px;line-height:1.7;color:var(--ink-soft);margin:0}
+.band.mid{background:var(--accent-tint);border-inline:3px solid var(--accent)}
+.band.mid .bl{color:var(--accent)}
+.membrane{
+  background:var(--surface-2);padding:9px 20px;
+  font-family:var(--mono);font-size:11px;color:var(--muted);
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+}
+.membrane b{color:var(--ink-soft);font-weight:500}
+
+/* ---------- bars ---------- */
+.bars{margin:26px 0;display:flex;flex-direction:column;gap:14px}
+.bar-row{display:grid;grid-template-columns:minmax(96px,150px) 1fr auto;gap:14px;align-items:center}
+.bar-lbl{font-size:13.5px;color:var(--ink);line-height:1.4}
+.bar-track{background:var(--surface-2);border:1px solid var(--rule-soft);height:22px;position:relative;min-width:60px}
+.bar-fill{height:100%;background:var(--accent);opacity:.85}
+.bar-fill.alt{background:var(--muted)}
+.bar-val{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums;font-weight:500;color:var(--ink);white-space:nowrap}
+.scale-note{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:4px}
+@media (max-width:560px){
+  .bar-row{grid-template-columns:1fr auto;gap:8px 12px}
+  .bar-track{grid-column:1/-1}
+}
+
+/* ---------- risk ---------- */
+.risk{border:1px solid var(--rule);background:var(--surface);margin-bottom:14px;padding:20px 22px}
+.risk-hd{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.risk-id{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--risk);letter-spacing:.06em}
+.risk-t{font-family:var(--serif);font-weight:600;font-size:17.5px;color:var(--ink);flex:1;min-width:200px}
+.meter{display:flex;gap:3px;align-items:center}
+.meter i{width:16px;height:5px;background:var(--rule);display:block;border-radius:1px}
+.meter i.on{background:var(--risk)}
+.meter em{font-style:normal;font-family:var(--mono);font-size:10px;color:var(--muted);margin-left:5px}
+.risk p{margin:0;font-size:14.5px}
+
+/* ---------- facts ---------- */
+.facts{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:1px;background:var(--rule);border:1px solid var(--rule);margin:26px 0;
+}
+.facts div{background:var(--surface);padding:15px 16px}
+.facts .fv{font-family:var(--mono);font-size:20px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink);line-height:1.25;margin-bottom:5px}
+.facts .fl{font-size:12px;color:var(--muted);line-height:1.55}
+
+/* ---------- callout ---------- */
+.callout{
+  background:var(--surface-2);border:1px solid var(--rule);
+  padding:20px 24px;margin:26px 0;
+}
+.callout p:last-child{margin-bottom:0}
+.callout .ct{
+  font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:10px;
+}
+.callout.warnb{background:var(--warn-tint);border-color:color-mix(in srgb,var(--warn) 30%,transparent)}
+.callout.warnb .ct{color:var(--warn)}
+.callout.riskb{background:var(--risk-tint);border-color:color-mix(in srgb,var(--risk) 30%,transparent)}
+.callout.riskb .ct{color:var(--risk)}
+
+/* ---------- sources ---------- */
+ol.src{list-style:none;counter-reset:s;padding:0;margin:26px 0;font-size:13.5px}
+ol.src li{
+  counter-increment:s;padding:10px 0 10px 42px;position:relative;
+  border-bottom:1px solid var(--rule-soft);color:var(--ink-soft);line-height:1.65;
+}
+ol.src li::before{
+  content:counter(s,decimal-leading-zero);position:absolute;left:0;top:11px;
+  font-family:var(--mono);font-size:11px;color:var(--muted);
+}
+ol.src a{word-break:break-word}
+
+/* ---------- footer ---------- */
+footer{
+  border-top:2px solid var(--ink);margin-top:20px;padding-top:22px;
+  max-width:var(--col);font-size:13px;color:var(--muted);line-height:1.75;
+}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---------- merged-section hierarchy ---------- */
+h3.sub{
+  font-family:var(--serif);font-weight:700;
+  font-size:clamp(21px,2.8vw,27px);line-height:1.35;
+  margin:0 0 24px;padding-top:38px;border-top:1px solid var(--rule);
+  text-wrap:balance;
+}
+h3.sub:first-of-type{border-top:none;padding-top:0}
+h3.sub .subn{
+  display:block;font-family:var(--mono);font-size:11.5px;font-weight:600;
+  letter-spacing:.14em;color:var(--accent);margin-bottom:8px;
+}
+h5{
+  font-family:var(--sans);font-weight:700;font-size:13.5px;
+  letter-spacing:.02em;margin:26px 0 9px;color:var(--ink-soft);
+}
+section.wide > p,section.wide > ul.plain,section.wide > ol,
+section.wide > blockquote,section.wide > h2.sec,section.wide > h3.sub,
+section.wide > h4,section.wide > h5,section.wide > .callout,
+section.wide > .chips,section.wide > .risk{max-width:var(--col)}
+</style>
+
+<nav class="top">
+  <div class="inner">
+    <span class="brand">{{公司名}}</span>
+    <div class="links">
+      <a href="#thesis">结论先行</a>
+      <a href="#premise">公司脉络</a>
+      <a href="#org-talent">组织人才</a>
+      <a href="#tech">技术路线</a>
+      <a href="#capital">资本结构</a>
+      <a href="#compete">竞争格局</a>
+      <a href="#outlook">发展走向</a>
+      <a href="#caveats">信息源</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<header class="mast">
+  <p class="kicker">公司深度研究 · {{赛道}} · {{年份}}</p>
+  <h1>{{公司名}}</h1>
+  <p class="standfirst">{{一句话核心问题：为什么 X——这对 Y 意味着什么？}}</p>
+  <dl class="docmeta">
+    <div><dt>数据截止</dt><dd>{{YYYY-MM-DD}}</dd></div>
+    <div><dt>版本</dt><dd>v1 · {{N}}部分 + 信息源</dd></div>
+    <div><dt>核心结论</dt><dd>{{一句话}}</dd></div>
+    <div><dt>信息源</dt><dd>公开信息源 {{N}} 项</dd></div>
+  </dl>
+</header>
+
+<section class="thesis" id="thesis" style="border-top-width:2px">
+  <h2>结论先行</h2>
+  <ol>
+    <li><b>{{加粗论断，一句话。}}</b>{{证据、数字、对比。}}<b>需要强调的是：{{自我限定——这条的依据是什么、边界在哪。}}</b></li>
+    <li><b>{{论断二。}}</b>{{证据。}}</li>
+    <li><b>{{论断三。}}</b>{{证据。}}</li>
+    <li><b>{{论断四。}}</b>{{证据。}}</li>
+  </ol>
+</section>
+
+<section id="premise">
+  <span class="snum">01</span>
+  <h2 class="sec">公司脉络：先把它是谁、卖什么、靠什么收钱说清楚</h2>
+
+  <p class="lede">{{开场：这家公司最容易被误读的地方是什么。}}</p>
+
+  <div class="facts">
+    <div><div class="fv">{{大数字}}</div><div class="fl">{{这个数字的含义与口径}}</div></div>
+    <div><div class="fv">{{大数字}}</div><div class="fl">{{含义}}</div></div>
+    <div><div class="fv">{{大数字}}</div><div class="fl">{{含义}}</div></div>
+    <div><div class="fv">{{大数字}}</div><div class="fl">{{含义}}</div></div>
+  </div>
+
+  <h3>{{小标题}}</h3>
+  <p>{{正文。数字密集，关键处用 <b>加粗</b>，需要读者注意的口径用 <em>高亮</em>。}}</p>
+
+  <blockquote>
+    {{直接引用创始人 / 官方公告的原话。}}
+    <cite>{{出处，日期}}</cite>
+  </blockquote>
+
+  <div class="tw">
+    <table>
+      <caption>{{表注：数据口径与来源}}</caption>
+      <thead><tr><th>项目</th><th class="n">数值</th><th>口径 / 说明</th></tr></thead>
+      <tbody>
+        <tr><td class="k">{{项目}}</td><td class="n">{{数值}}</td><td>{{说明}}</td></tr>
+        <tr><td class="k">{{项目}}</td><td class="n">{{数值}}</td><td>{{说明}}</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="org-talent">
+  <span class="snum">02</span>
+  <h2 class="sec">组织人才：谁在做，以及他们怎么组织自己</h2>
+
+  <h3>创始团队</h3>
+  <p>{{引用数 / h-index / 前雇主 / 师承。学术体量与产业经验分开讲。}}</p>
+
+  <div class="bars">
+    <div class="bar-row">
+      <span class="bar-lbl">{{人物 A}}</span>
+      <span class="bar-track"><span class="bar-fill" style="width:{{pct}}%"></span></span>
+      <span class="bar-val">{{数值}}</span>
+    </div>
+    <div class="bar-row">
+      <span class="bar-lbl">{{人物 B}}</span>
+      <span class="bar-track"><span class="bar-fill alt" style="width:{{pct}}%"></span></span>
+      <span class="bar-val">{{数值}}</span>
+    </div>
+    <div class="scale-note">{{条形图的量纲说明}}</div>
+  </div>
+
+  <h3>团队规模与组建逻辑</h3>
+  <p>{{学术网络型 vs 产业回流型。招聘岗位分布说明战略重心。}}</p>
+
+  <div class="callout">
+    <div class="ct">口径提醒</div>
+    <p>{{例如：论文署名 ≠ 员工名单；在招岗位 ≠ 实际团队。}}</p>
+  </div>
+</section>
+
+<section id="tech">
+  <span class="snum">03</span>
+  <h2 class="sec">技术路线：它站在这条栈的哪一层</h2>
+
+  <div class="stack">
+    <div class="band"><div class="bl">应用层</div><div class="bn">{{谁}}</div><p class="bd">{{做什么}}</p></div>
+    <div class="membrane"><span>{{衔接说明}}</span><b>{{关键约束}}</b></div>
+    <div class="band mid"><div class="bl">← 本报告对象</div><div class="bn">{{公司}}</div><p class="bd">{{做什么}}</p></div>
+    <div class="membrane"><span>{{衔接说明}}</span><b>{{关键约束}}</b></div>
+    <div class="band"><div class="bl">参数层</div><div class="bn">{{谁}}</div><p class="bd">{{做什么}}</p></div>
+  </div>
+
+  <p>{{技术分野：和谁像、和谁不像，差在哪。}}</p>
+</section>
+
+<section id="capital">
+  <span class="snum">04</span>
+  <h2 class="sec">资本结构：融资讲的是故事，不只是金额</h2>
+
+  <div class="tw">
+    <table>
+      <thead><tr><th>轮次</th><th>时间</th><th class="n">金额</th><th>投资方</th><th>性质</th></tr></thead>
+      <tbody>
+        <tr><td class="k">{{轮次}}</td><td>{{时间}}</td><td class="n">{{金额}}</td><td>{{投资方}}</td><td><span class="chip mid">{{国资}}</span></td></tr>
+        <tr><td class="k">{{轮次}}</td><td>{{时间}}</td><td class="n">{{金额}}</td><td>{{投资方}}</td><td><span class="chip ok">{{市场化}}</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>{{投资方性质意味着什么：市场化下注 vs 被地方国资接住。退出路径。}}</p>
+</section>
+
+<section id="compete">
+  <span class="snum">05</span>
+  <h2 class="sec">竞争格局：上游、横向、下游，和它站的那条缝</h2>
+
+  <h3>上游：常常同时是股东与对手</h3>
+  <p>{{谁供给它、又和它竞争。}}</p>
+
+  <h3>横向：谁在同一个类别里</h3>
+  <p>{{按它自己的分类法判断谁是真对手。}}</p>
+
+  <h3>下游：自建还是采购</h3>
+  <p>{{客户为什么可能自建。}}</p>
+
+  <div class="callout warnb">
+    <div class="ct">它站的那条缝</div>
+    <p>{{这条缝有多宽，会不会随时间变窄。护城河的方向。}}</p>
+  </div>
+</section>
+
+<section id="outlook">
+  <span class="snum">06</span>
+  <h2 class="sec">发展走向：可能的路径、该盯的信号，和主要风险</h2>
+
+  <h3>可能的路径</h3>
+  <div class="chips">
+    <span class="chip ok">路径 A：{{…}}</span>
+    <span class="chip mid">路径 B：{{…}}</span>
+    <span class="chip no">路径 C：{{…}}</span>
+  </div>
+  <p>{{每条路径的触发条件。分支式，不预设单一结论。}}</p>
+
+  <h3>该盯的信号</h3>
+  <ul class="plain">
+    <li><b>{{信号}}</b>——{{为什么它前瞻。}}</li>
+    <li><b>{{信号}}</b>——{{为什么。}}</li>
+  </ul>
+
+  <h3>主要风险</h3>
+  <p>以下按<b>对「这件事是否被正确理解」的影响程度</b>排序，而不是按发生概率。</p>
+
+  <div class="risk">
+    <div class="risk-hd"><span class="risk-id">R1</span><span class="risk-t">{{风险标题}}</span>
+      <span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><em>高</em></span></div>
+    <p>{{风险描述。<b>加粗那句最容易被误读的。}}}</b></p>
+  </div>
+
+  <div class="risk">
+    <div class="risk-hd"><span class="risk-id">R2</span><span class="risk-t">{{风险标题}}</span>
+      <span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><em>中</em></span></div>
+    <p>{{风险描述。}}</p>
+  </div>
+
+  <h3>上限推演：如果一切顺利，能到哪</h3>
+  <p>{{乐观情形下的天花板，以及它受什么约束。}}</p>
+</section>
+
+<section id="caveats">
+  <span class="snum">07</span>
+  <h2 class="sec">哪些是事实，哪些还需要打问号</h2>
+
+  <h3>已核实（附一手来源）</h3>
+  <ul class="plain">
+    <li>{{事实}}——<a href="{{url}}">{{来源}}</a></li>
+  </ul>
+
+  <h3>未核实 / 存疑</h3>
+  <ul class="plain">
+    <li>{{存疑项}}——{{为什么存疑，什么能证伪它。}}</li>
+  </ul>
+
+  <h3>未能获取</h3>
+  <ul class="plain">
+    <li>{{想要但拿不到的数据}}——{{障碍是什么（登录墙 / 未披露）。}}</li>
+  </ul>
+</section>
+
+<section id="sources">
+  <span class="snum">08</span>
+  <h2 class="sec">主要公开信息源</h2>
+  <ol class="src">
+    <li>{{标题}}，{{日期}}。<a href="{{url}}">{{url 显示文本}}</a></li>
+    <li>{{标题}}，{{日期}}。<a href="{{url}}">{{url 显示文本}}</a></li>
+  </ol>
+</section>
+
+<footer>
+  <p>本报告基于公开信息整理，数据截止 {{YYYY-MM-DD}}。所有推断均已标注核实状态；未标注来源的数字为公开报道口径，可能存在偏差。</p>
+</footer>
+
+</div>
